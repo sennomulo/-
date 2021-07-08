@@ -13,16 +13,17 @@ void print(float a[], int n);//打印输出数组元素
 
 void arrange(float a[], int n)
 {
-	int i, j, k;
-	for (i=0; i<n-1; i++)
+	int i, j;
+	float k;
+	for (i = 0; i < n-1; i++)
 	{
-		for (j= i; j<n;j++)
+		for (j = i; j < n; j++)
 		{
-			if(a[i]<a[j])
+			if(a[i] < a[j])
 			{
-				k=a[i];
-				a[i]=a[j];
-				a[j]=k;
+				k = a[i];
+				a[i] = a[j];
+				a[j] = k;
 			}
 		}
 	}
@@ -31,9 +32,9 @@ void arrange(float a[], int n)
 void print(float a[], int n)
 {
 	int i;
-	for (i=0; i<n; i++)
+	for (i = 0; i < n; i++)
 	{
-		printf("%-7.2f",a[i]);
+		printf("%-7.2f", a[i]);
 	}
 }
 
@@ -41,19 +42,28 @@ int main(void)
 {
 	float a[N];
 	int i;
+	char ch;
 
-	printf("请依次输入数组元素\n");
-	for(i = 0; i<N; i++)
+	do
 	{
-		scanf("%f",&a[i]);
+		printf("请依次输入数组元素\n");
+		for(i = 0; i < N; i++)
+		{
+			scanf("%f", &a[i]);
+		}
+		//输入数组元素
+
+		arrange(a, N);//对数组进行降序排序
+
+		printf("将该数组进行降序排序后得到的结果为：\n");
+		print(a, N);
+		printf("\n\n");//输出数组元素
+
+		printf("请问您是否要重新输入数组？(y/n)\n");
+		fflush(stdin);
+		ch = getchar();
 	}
-	//输入数组元素
-
-	arrange(a, N);//对数组进行降序排序
-
-	printf("将该数组进行降序排序后得到的结果为：\n");
-	print(a, N);
-	printf("\n");//输出数组元素
+	while(ch == 'y' || ch == 'Y');
 
 	system("pause");
 	return 0;
