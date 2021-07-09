@@ -27,7 +27,7 @@ void get_computer_move(void);
 void disp_matrix(void);
 /* 判断游戏是否结束 */
 char check(void);
-//计算机寻找己方升级机会
+//计算机寻找己方升级机会.别看了，行不通。QAQ
 void computer_favor(void);
 
 //判断用参数
@@ -54,8 +54,12 @@ int main(void)
 		Done = check();
 		if (Done != CHESSPIECE_BLANK) break;
 
+		/*get_computer_move();
+		Done = check();*/
+		computer_favor();
+		if (Done != CHESSPIECE_BLANK) break;
 	} while (Done == CHESSPIECE_BLANK);
-	computer_favor();
+	//computer_favor();
 
 	disp_matrix();
 
@@ -137,6 +141,7 @@ void get_computer_move(void)//计算机只找不下
 		exit(0)表示正常退出
 		*/
 	}
+	//else g_matrix[I][J] = CHESSPIECE_COMPUTER;
 }
 
 void computer_favor(void)
@@ -154,6 +159,7 @@ void computer_favor(void)
 			exit(0);
 		}
 		else g_matrix[I][J] = CHESSPIECE_BLANK;
+		get_computer_move();
 	}while(I * J != 9);
 
 	get_computer_move();
