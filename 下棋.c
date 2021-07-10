@@ -242,20 +242,20 @@ char check(void)
 
 	for (i = 0; i < 3; i++)
 		if (g_matrix[i][0] == g_matrix[i][1] &&
-		        g_matrix[i][0] == g_matrix[i][2])
+		        g_matrix[i][0] == g_matrix[i][2] && g_matrix[i][0] != CHESSPIECE_BLANK)
 			return g_matrix[i][0];
 
 	for (i = 0; i < 3; i++)
 		if (g_matrix[0][i] == g_matrix[1][i] &&
-		        g_matrix[0][i] == g_matrix[2][i])
+		        g_matrix[0][i] == g_matrix[2][i] && g_matrix[0][i] != CHESSPIECE_BLANK)
 			return g_matrix[0][i];
 
 	if (g_matrix[0][0] == g_matrix[1][1] &&
-	        g_matrix[1][1] == g_matrix[2][2])
+	        g_matrix[1][1] == g_matrix[2][2] && g_matrix[0][0] != CHESSPIECE_BLANK)
 		return g_matrix[0][0];
 
 	if (g_matrix[0][2] == g_matrix[1][1] &&
-	        g_matrix[1][1] == g_matrix[2][0])
+	        g_matrix[1][1] == g_matrix[2][0] && g_matrix[2][0] != CHESSPIECE_BLANK)
 		return g_matrix[0][2];
 
 	return CHESSPIECE_BLANK;
